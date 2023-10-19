@@ -1,0 +1,4 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Sun Oct 08 23:58:50 MSK 2023
+org.eclipse.swt.gtk.linux.x86_64-4.6.1.jar>swt-repo=
+org.eclipse.swt.gtk.linux.x86_64-4.6.1.pom>swt-repo=

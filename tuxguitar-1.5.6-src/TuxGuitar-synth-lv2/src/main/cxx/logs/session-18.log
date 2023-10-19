@@ -1,0 +1,15 @@
+04192022 19:15:38 : Starting work
+LV2Client -> starting
+LV2Client -> parsing arguments
+LV2Client -> pluginURI: http://guitarix.sourceforge.net/plugins/gx_hogsfoot_#_hogsfoot_
+LV2Client -> socket created
+LV2Client -> socket connected
+error: failed to open file /usr/lib/lv2/gx_colwah.lv2/manifest.ttl (No such file or directory)
+lilv_world_load_file(): error: Error loading file `file:///usr/lib/lv2/gx_colwah.lv2/manifest.ttl'
+lilv_world_load_bundle(): error: Error reading file:///usr/lib/lv2/gx_colwah.lv2/manifest.ttl
+LV2Feature_init -> Required features:
+LV2Client -> sending session ID 18
+LV2Client -> time out
+LV2Client -> ended
+error
+04192022 19:15:52 : Done

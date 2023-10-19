@@ -1,0 +1,54 @@
+04192022 19:14:24 : Starting work
+LV2Client -> starting
+LV2Client -> parsing arguments
+LV2Client -> pluginURI: http://kxstudio.sf.net/carla/plugins/audiogain_s
+LV2Client -> socket created
+LV2Client -> socket connected
+error: failed to open file /usr/lib/lv2/gx_colwah.lv2/manifest.ttl (No such file or directory)
+lilv_world_load_file(): error: Error loading file `file:///usr/lib/lv2/gx_colwah.lv2/manifest.ttl'
+lilv_world_load_bundle(): error: Error reading file:///usr/lib/lv2/gx_colwah.lv2/manifest.ttl
+LV2Feature_init -> Required features:
+    http://lv2plug.in/ns/ext/buf-size#boundedBlockLength
+    http://lv2plug.in/ns/ext/options#options
+    http://lv2plug.in/ns/ext/urid#map
+LV2Client -> sending session ID 9
+lilv_state_new_from_instance(): error: Error saving plugin state: Missing features
+
+ >> LV2Client_processGetState
+<lv2:plugin:state>
+	a pset:Preset ;
+	lv2:appliesTo <http://kxstudio.sf.net/carla/plugins/audiogain_s> .
+
+
+ << LV2Client_processGetState
+lilv_state_new_from_instance(): error: Error saving plugin state: Missing features
+
+ >> LV2Client_processGetState
+<lv2:plugin:state>
+	a pset:Preset ;
+	lv2:appliesTo <http://kxstudio.sf.net/carla/plugins/audiogain_s> .
+
+
+ << LV2Client_processGetState
+lilv_state_new_from_instance(): error: Error saving plugin state: Missing features
+
+ >> LV2Client_processGetState
+<lv2:plugin:state>
+	a pset:Preset ;
+	lv2:appliesTo <http://kxstudio.sf.net/carla/plugins/audiogain_s> .
+
+
+ << LV2Client_processGetState
+lilv_state_new_from_instance(): error: Error saving plugin state: Missing features
+
+ >> LV2Client_processGetState
+<lv2:plugin:state>
+	a pset:Preset ;
+	lv2:appliesTo <http://kxstudio.sf.net/carla/plugins/audiogain_s> .
+
+
+ << LV2Client_processGetState
+LV2Client -> time out
+LV2Client -> ended
+error
+04192022 19:15:39 : Done

@@ -1,0 +1,20 @@
+04192022 19:15:29 : Starting work
+LV2Client -> starting
+LV2Client -> parsing arguments
+LV2Client -> pluginURI: http://guitarix.sourceforge.net/plugins/gx_redeye#chump
+LV2Client -> socket created
+LV2Client -> socket connected
+error: failed to open file /usr/lib/lv2/gx_colwah.lv2/manifest.ttl (No such file or directory)
+lilv_world_load_file(): error: Error loading file `file:///usr/lib/lv2/gx_colwah.lv2/manifest.ttl'
+lilv_world_load_bundle(): error: Error reading file:///usr/lib/lv2/gx_colwah.lv2/manifest.ttl
+using block size: 512
+chump
+LV2Feature_init -> Required features:
+    http://lv2plug.in/ns/ext/worker#schedule
+    http://lv2plug.in/ns/ext/urid#map
+    http://lv2plug.in/ns/ext/buf-size#boundedBlockLength
+LV2Client -> sending session ID 12
+LV2Client -> time out
+LV2Client -> ended
+error
+04192022 19:15:44 : Done

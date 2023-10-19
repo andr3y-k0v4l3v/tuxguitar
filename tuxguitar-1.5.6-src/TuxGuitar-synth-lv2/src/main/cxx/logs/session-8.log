@@ -1,0 +1,36 @@
+04192022 19:12:54 : Starting work
+LV2Client -> starting
+LV2Client -> parsing arguments
+LV2Client -> pluginURI: http://gareus.org/oss/lv2/avldrums#RedZeppelinMulti
+LV2Client -> socket created
+LV2Client -> socket connected
+error: failed to open file /usr/lib/lv2/gx_colwah.lv2/manifest.ttl (No such file or directory)
+lilv_world_load_file(): error: Error loading file `file:///usr/lib/lv2/gx_colwah.lv2/manifest.ttl'
+lilv_world_load_bundle(): error: Error reading file:///usr/lib/lv2/gx_colwah.lv2/manifest.ttl
+LV2Feature_init -> Required features:
+    http://lv2plug.in/ns/ext/urid#map
+    http://lv2plug.in/ns/ext/worker#schedule
+LV2Client -> sending session ID 8
+
+ >> LV2Client_processGetState
+<lv2:plugin:state>
+	a pset:Preset ;
+	lv2:appliesTo <http://gareus.org/oss/lv2/avldrums#RedZeppelinMulti> .
+
+
+ << LV2Client_processGetState
+fluidsynth: warning: No preset found on channel 9 [bank=128 prog=0]
+LV2UI_setPortData buffer_size 16
+
+ >> LV2Client_processGetState
+<lv2:plugin:state>
+	a pset:Preset ;
+	lv2:appliesTo <http://gareus.org/oss/lv2/avldrums#RedZeppelinMulti> .
+
+
+ << LV2Client_processGetState
+LV2Client -> time out
+LV2UI_setPortData buffer_size 16
+LV2Client -> ended
+error
+04192022 19:15:39 : Done

@@ -1,0 +1,31 @@
+diff --color -urN tuxguitar-1.5.6-src/TuxGuitar-synth-vst/src-client/GNUmakefile tuxguitar-1.5.6-src.modified/TuxGuitar-synth-vst/src-client/GNUmakefile
+--- tuxguitar-1.5.6-src/TuxGuitar-synth-vst/src-client/GNUmakefile
++++ tuxguitar-1.5.6-src.modified/TuxGuitar-synth-vst/src-client/GNUmakefile
+@@ -1,17 +1,17 @@
+-VST_SDK_HOME?=/home/julian/Documents/vst/VST_SDK/VST3_SDK/pluginterfaces/vst2.x/
++VST_SDK_HOME=/usr/src/pluginterfaces-tuxguitar-1.5.6/vst2.x/
+ 
+ ###############################################
+ ### GNULinux flags ############################
+ ###############################################
+-#CXX?=g++
+-#RM?=rm -f
+-#CFLAGS?=-I$(VST_SDK_HOME) -fPIC -fpermissive 
+-#LDFLAGS?=
+-#LDLIBS?=-ldl -lX11 -lrt -lpthread
+-#LDPATH?=-L/usr/lib
+-#BINARY_NAME?=tuxguitar-synth-vst
+-#BINARY_SUFFIX?=.bin
+-#BINARY_OS?=_GNULinux
++CXX=g++
++RM=rm -f
++CFLAGS=-I$(VST_SDK_HOME) -fPIC -fpermissive 
++LDFLAGS=
++LDLIBS=-ldl -lX11 -lrt -lpthread
++LDPATH=-L/usr/lib
++BINARY_NAME=tuxguitar-synth-vst
++BINARY_SUFFIX=.bin
++BINARY_OS=_GNULinux
+ ###############################################
+ 
+ ###############################################
