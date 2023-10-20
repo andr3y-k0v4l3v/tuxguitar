@@ -9,8 +9,8 @@ Group: Sound
 URL: http://www.tuxguitar.com.ar/
 
 Source0: tuxguitar.tar
-Source1: m2-repository-tuxguitar-%version.tar
-Source2: pluginterfaces-tuxguitar-%version.tar
+Source1: m2-repository-tuxguitar.tar
+Source2: pluginterfaces-tuxguitar.tar
 Source3: %{name}.sh
 Source9: %{name}.desktop
 
@@ -60,7 +60,7 @@ tar -x -C ~ -f %SOURCE2
 
 %build
 pushd build-scripts/tuxguitar-linux-x86_64
-mvn -P native-modules package -Dmaven.repo.local=${HOME}/m2-repository-tuxguitar-%version
+mvn -P native-modules package -Dmaven.repo.local=${HOME}/m2-repository-tuxguitar
 popd
 
 %install
