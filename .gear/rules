@@ -1,7 +1,6 @@
 copy: *.patch
 copy: *.desktop
 copy: *.sh
-tar: tuxguitar name=tuxguitar
-tar: m2-repository-tuxguitar name=m2-repository-tuxguitar
-tar: pluginterfaces-tuxguitar name=pluginterfaces-tuxguitar
-spec: tuxguitar.spec
+tar: tuxguitar
+tar: m2-repository-tuxguitar
+tar: pluginterfaces-tuxguitar

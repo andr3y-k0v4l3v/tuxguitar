@@ -6,24 +6,22 @@ Summary: A multitrack guitar tablature editor and player
 License: LGPL
 Group: Sound
 
-URL: http://www.tuxguitar.com.ar/
+Url: http://www.tuxguitar.com.ar/
 
-Source0: tuxguitar.tar
-Source1: m2-repository-tuxguitar.tar
-Source2: pluginterfaces-tuxguitar.tar
-Source3: %{name}.sh
-Source9: %{name}.desktop
+Source0: %name-%version.tar
+Source1: m2-repository-%name-%version.tar
+Source2: pluginterfaces-%name-%version.tar
+Source3: %name.sh
+Source9: %name.desktop
 
 Patch0: tuxguitar-%version-synth-vst-fix.patch
 
 Packager: Andrey Kovalev <ded@altlinux.ru>
 
-ExclusiveArch: %ix86 x86_64
-
-Requires: java-1.8.0-openjdk
+Requires: java-17-openjdk
 Requires: javapackages-filesystem
 Requires: glibc libfluidsynth pipewire-jack-libs libalsa soundfont2 lilv
-BuildRequires: eclipse-swt java-1.8.0-openjdk-devel java-headless
+BuildRequires: eclipse-swt java-17-openjdk-devel java-headless
 BuildRequires: javapackages-filesystem maven glibc libfluidsynth-devel
 BuildRequires: libjack-devel libalsa-devel soundfont2-default gcc-c++
 BuildRequires: lilv-devel musl-devel libconfig-devel libsuil-devel
@@ -31,8 +29,6 @@ BuildRequires: qt5-qtbase qt5-qtbase-gui qt5-base-devel libfreetype-devel
 BuildRequires: libxcbutil-devel libXdmcp-devel libxcbutil-cursor-devel
 BuildRequires: libxcbutil-keysyms-devel libxkbcommon-x11-devel libpango-devel
 BuildRequires: libgtkmm2-devel libgtkmm3-devel libstdc++-devel
-
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}
 
 %description
 TuxGuitar is a guitar tablature editor with player support through midi.
@@ -53,81 +49,62 @@ With TuxGuitar, you will be able to compose music using the following features:
 * Imports and exports gp3,gp4 and gp5 files
 
 %prep
-tar -x -C ~ -f %SOURCE1
-tar -x -C ~ -f %SOURCE2
-%setup -n %name
+%setup -n m2-repository-%name-%version -b 1
+%setup -n pluginterfaces-%name-%version -b 2
+%setup -n %name-%version
+echo %buildroot
 %patch0 -p1
 
 %build
 pushd build-scripts/tuxguitar-linux-x86_64
-mvn -P native-modules package -Dmaven.repo.local=${HOME}/m2-repository-tuxguitar
+mvn -P native-modules package -Dmaven.repo.local=../../../m2-repository-%name-%version
 popd
 
 %install
-rm -rf $RPM_BUILD_ROOT
-mkdir -p $RPM_BUILD_ROOT/%{_bindir}
-mkdir -p $RPM_BUILD_ROOT/%{_datadir}/%{name}-%{version}/
-mkdir -p $RPM_BUILD_ROOT/%{_libdir}/%{name}-%{version}/
+mkdir -p %buildroot/%_bindir
+mkdir -p %buildroot/%_datadir/%name-%version/
+mkdir -p %buildroot/%_libdir/%name-%version/
 
-install -pm 755 %{SOURCE3} $RPM_BUILD_ROOT/%{_bindir}/tuxguitar
+install -pm 755 %SOURCE3 %buildroot/%_bindir/tuxguitar
 
-cp -r build-scripts/tuxguitar-linux-x86_64/target/%{name}-%{version}-linux-x86_64/dist/ $RPM_BUILD_ROOT/%{_datadir}/%{name}-%{version}/
-cp -r build-scripts/tuxguitar-linux-x86_64/target/%{name}-%{version}-linux-x86_64/share/ $RPM_BUILD_ROOT/%{_datadir}/%{name}-%{version}/
-cp -r build-scripts/tuxguitar-linux-x86_64/target/%{name}-%{version}-linux-x86_64/lib/ $RPM_BUILD_ROOT/%{_libdir}/%{name}-%{version}/
+cp -r build-scripts/tuxguitar-linux-x86_64/target/%name-%version-linux-x86_64/dist/ %buildroot/%_datadir/%name-%version/
+cp -r build-scripts/tuxguitar-linux-x86_64/target/%name-%version-linux-x86_64/share/ %buildroot/%_datadir/%name-%version/
+cp -r build-scripts/tuxguitar-linux-x86_64/target/%name-%version-linux-x86_64/lib/ %buildroot/%_libdir/%name-%version/
 
 # desktop files
-install -dm 755 $RPM_BUILD_ROOT/%{_datadir}/applications
-install -pm 644 %{SOURCE9} $RPM_BUILD_ROOT/%{_datadir}/applications/
+install -dm 755 %buildroot/%_datadir/applications
+install -pm 644 %SOURCE9 %buildroot/%_datadir/applications/
 
 # icons
 for dim in 16x16 24x24 32x32 48x48 64x64 96x96; do
- install -dm 755 $RPM_BUILD_ROOT/%{_datadir}/icons/hicolor/$dim/apps/%{name}.png
- install -pm 644 TuxGuitar/share/skins/Lavender/icon-$dim.png $RPM_BUILD_ROOT/%{_datadir}/icons/hicolor/$dim/apps/%{name}.png
+ install -dm 755 %buildroot/%_iconsdir/hicolor/$dim/apps/%name.png
+ install -pm 644 TuxGuitar/share/skins/Lavender/icon-$dim.png %buildroot/%_iconsdir/hicolor/$dim/apps/%name.png
 done
 
 # mime-type icons
-install -dm 755 $RPM_BUILD_ROOT/%{_datadir}/icons/hicolor/96x96/mimetypes
-install -pm 644 TuxGuitar/share/skins/Lavender/icon-96x96.png $RPM_BUILD_ROOT/%{_datadir}/icons/hicolor/96x96/mimetypes/audio-x-tuxguitar.png
-install -pm 644 TuxGuitar/share/skins/Lavender/icon-96x96.png $RPM_BUILD_ROOT/%{_datadir}/icons/hicolor/96x96/mimetypes/audio-x-gtp.png
-install -pm 644 TuxGuitar/share/skins/Lavender/icon-96x96.png $RPM_BUILD_ROOT/%{_datadir}/icons/hicolor/96x96/mimetypes/audio-x-ptb.png
+install -dm 755 $RPM_BUILD_ROOT/%_iconsdir/hicolor/96x96/mimetypes
+install -pm 644 TuxGuitar/share/skins/Lavender/icon-96x96.png %buildroot/%_iconsdir/hicolor/96x96/mimetypes/audio-x-tuxguitar.png
+install -pm 644 TuxGuitar/share/skins/Lavender/icon-96x96.png %buildroot/%_iconsdir/hicolor/96x96/mimetypes/audio-x-gtp.png
+install -pm 644 TuxGuitar/share/skins/Lavender/icon-96x96.png %buildroot/%_iconsdir/hicolor/96x96/mimetypes/audio-x-ptb.png
 
-desktop-file-install --dir $RPM_BUILD_ROOT%{_datadir}/applications --delete-original $RPM_BUILD_ROOT%{_datadir}/applications/%{name}.desktop
+desktop-file-install --dir %buildroot/%_datadir/applications --delete-original %buildroot/%_datadir/applications/%name.desktop
 
 # mime-type file
-install -dm 755 $RPM_BUILD_ROOT/%{_datadir}/mime/packages
-install -pm 644 misc/%{name}.xml $RPM_BUILD_ROOT/%{_datadir}/mime/packages/
-
-%clean
-rm -rf $RPM_BUILD_ROOT
-
-%post
-update-mime-database %{_datadir}/mime  >& /dev/null ||:
-touch --no-create %{_datadir}/icons/hicolor
-if [ -x %{_bindir}/gtk-update-icon-cache ] ; then
-  %{_bindir}/gtk-update-icon-cache --quiet %{_datadir}/icons/hicolor || :
-fi
-
-%postun
-update-mime-database %{_datadir}/mime  >& /dev/null ||:
-touch --no-create %{_datadir}/icons/hicolor
-if [ -x %{_bindir}/gtk-update-icon-cache ] ; then
-  %{_bindir}/gtk-update-icon-cache --quiet %{_datadir}/icons/hicolor || :
-fi
+install -dm 755 %buildroot/%_datadir/mime/packages
+install -pm 644 misc/%name.xml %buildroot/%_datadir/mime/packages/
 
 %files
-%defattr(-,root,root,-)
 %doc AUTHORS LICENSE README
 
-%{_libdir}/%{name}-%{version}
-%{_datadir}/%{name}-%{version}
-%{_datadir}/icons/hicolor/*/*/*
-%{_datadir}/applications/%{name}.desktop
-%{_datadir}/mime/packages/*.xml
+%_libdir/%name-%version
+%_datadir/%name-%version
+%_datadir/icons/hicolor/*/*/*
+%_datadir/applications/%name.desktop
+%_datadir/mime/packages/*.xml
 
-%{_bindir}/%{name}
+%_bindir/%name
 
 %changelog
-
 * Fri Sep 08 2023 Andrey Kovalev <ded@altlinux.ru> 1.5.6-alt1
 - update to 1.5.6
 

@@ -3,7 +3,7 @@ diff --color -urN tuxguitar-1.5.6-src/TuxGuitar-synth-vst/src-client/GNUmakefile
 +++ tuxguitar-1.5.6-src.modified/TuxGuitar-synth-vst/src-client/GNUmakefile
 @@ -1,17 +1,17 @@
 -VST_SDK_HOME?=/home/julian/Documents/vst/VST_SDK/VST3_SDK/pluginterfaces/vst2.x/
-+VST_SDK_HOME=/usr/src/pluginterfaces-tuxguitar/vst2.x/
++VST_SDK_HOME=/usr/src/RPM/BUILD/pluginterfaces-tuxguitar-1.5.6/vst2.x/
  
  ###############################################
  ### GNULinux flags ############################
