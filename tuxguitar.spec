@@ -3,7 +3,7 @@ Version: 1.5.6
 Release: alt1
 
 Summary: A multitrack guitar tablature editor and player
-License: LGPL
+License: LGPL-2.0+
 Group: Sound
 
 Url: http://www.tuxguitar.com.ar/
@@ -18,12 +18,11 @@ Patch0: tuxguitar-%version-synth-vst-fix.patch
 
 Requires: java-17-openjdk
 Requires: javapackages-filesystem
-Requires: glibc libfluidsynth pipewire-jack-libs libalsa soundfont2 lilv
 BuildRequires: eclipse-swt java-17-openjdk-devel java-headless
 BuildRequires: javapackages-filesystem maven glibc libfluidsynth-devel
 BuildRequires: libjack-devel libalsa-devel soundfont2-default gcc-c++
 BuildRequires: lilv-devel musl-devel libconfig-devel libsuil-devel
-BuildRequires: qt5-qtbase qt5-qtbase-gui qt5-base-devel libfreetype-devel
+BuildRequires: qt5-base-devel libfreetype-devel
 BuildRequires: libxcbutil-devel libXdmcp-devel libxcbutil-cursor-devel
 BuildRequires: libxcbutil-keysyms-devel libxkbcommon-x11-devel libpango-devel
 BuildRequires: libgtkmm2-devel libgtkmm3-devel libstdc++-devel
@@ -50,7 +49,6 @@ With TuxGuitar, you will be able to compose music using the following features:
 %setup -n m2-repository-%name-%version -b 1
 %setup -n pluginterfaces-%name-%version -b 2
 %setup -n %name-%version
-echo %buildroot
 %patch0 -p1
 
 %build
@@ -93,13 +91,11 @@ install -pm 644 misc/%name.xml %buildroot/%_datadir/mime/packages/
 
 %files
 %doc AUTHORS LICENSE README
-
 %_libdir/%name-%version
 %_datadir/%name-%version
-%_datadir/icons/hicolor/*/*/*
+%_iconsdir/hicolor/*/*/*
 %_datadir/applications/%name.desktop
 %_datadir/mime/packages/*.xml
-
 %_bindir/%name
 
 %changelog
