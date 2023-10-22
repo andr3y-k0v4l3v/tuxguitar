@@ -16,8 +16,6 @@ Source9: %name.desktop
 
 Patch0: tuxguitar-%version-synth-vst-fix.patch
 
-Packager: Andrey Kovalev <ded@altlinux.ru>
-
 Requires: java-17-openjdk
 Requires: javapackages-filesystem
 Requires: glibc libfluidsynth pipewire-jack-libs libalsa soundfont2 lilv
